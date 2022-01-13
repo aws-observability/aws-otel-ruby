@@ -1,0 +1,9 @@
+# Mac
+.DS_Store
+
+# VSCode
+.vscode/
+
+# ruby-on-rails
+**/ruby-on-rails/tmp
+**/ruby-on-rails/log
