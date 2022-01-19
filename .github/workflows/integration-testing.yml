@@ -1,0 +1,72 @@
+name: Integration Testing
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  publish_apps:
+    name: Publish and Test Apps
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      packages: write
+    strategy:
+      fail-fast: false
+      matrix:
+        app-platform: [ ruby-on-rails ]
+        instrumentation-type: [ manual ]
+    env:
+      APP_PATH: integration-test-apps/${{ matrix.instrumentation-type}}-instrumentation/${{ matrix.app-platform }}
+    steps:
+      - name: Checkout This Repo
+        uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ASSUME_ROLE_ARN }}
+          role-duration-seconds: 1200
+          aws-region: us-east-1
+      - name: Log in to the AWS ECR
+        uses: docker/login-action@v1
+        with:
+          registry: public.ecr.aws
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+      - name: Construct Sample App image tag
+        run: >
+          echo "APP_IMAGE=
+          public.ecr.aws/${{ github.repository }}/ruby-${{ matrix.app-platform }}-${{ matrix.instrumentation-type }}:${{ github.sha }}
+          " |
+          tee --append $GITHUB_ENV;
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          context: ${{ env.APP_PATH }}
+          tags: |
+            ${{ env.APP_IMAGE }}
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache
+      - name: Run test containers
+        working-directory: .github/docker-integration-tests
+        env:
+          INSTANCE_ID: ${{ github.run_id }}-${{ github.run_number }}
+          LISTEN_ADDRESS: 0.0.0.0:8080
+          APP_IMAGE: ${{ env.APP_IMAGE }}
+          # TODO: (NathanielRN) Once metrics are updated in OTel Ruby, update this
+          # to also validate metrics integration. See https://github.com/open-telemetry/opentelemetry-ruby/issues/81
+          VALIDATOR_COMMAND: >
+            -c default-otel-trace-validation.yml
+            --endpoint http://app:8080
+            --metric-namespace default
+            -t ${{ github.run_id }}-${{ github.run_number }}
+        run: docker-compose up --abort-on-container-exit

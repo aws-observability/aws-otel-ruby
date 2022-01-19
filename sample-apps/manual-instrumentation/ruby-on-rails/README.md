@@ -15,14 +15,16 @@ The application uses [Ruby on Rails](https://rubyonrails.org) to expose the foll
 
 ## Requirements
 
-- Ruby 2.6+
+- Ruby 2.7+
 - Rails 7.0+
+
+While this example requires Ruby 2.7+, [the OpenTelemetry Ruby documentation](https://opentelemetry.io/docs/instrumentation/ruby/getting_started/#requirements) indicates compatibility with versions of Ruby 2.5 and higher.
 
 ## Running the application
 
-For more information on running a python application using manual instrumentation, please refer to the [ADOT Ruby Manual Instrumentation Documentation](https://aws-otel.github.io/docs/getting-started/ruby-sdk/trace-manual-instr). In this context, the ADOT Collector is being run locally as a sidecar.
+For more information on running a ruby application using manual instrumentation, please refer to the [ADOT Ruby Manual Instrumentation Documentation](https://aws-otel.github.io/docs/getting-started/ruby-sdk/trace-manual-instr). In this context, the ADOT Collector is being run locally as a sidecar.
 
-Use `LISTEN_ADDRESS=127.0.0.1:8080 rails server` to run the application directly in your terminal. (While we wait for an upstream `opentelemetry-ruby` [fix to set the correct OTel Exporter endpoint default](https://github.com/open-telemetry/opentelemetry-ruby/pull/1079), you must also set `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318`).
+Use `LISTEN_ADDRESS=127.0.0.1:8080 rails server` to run the application directly in your terminal.
 
 Sending metrics to Amazon CloudWatch is not yet validated. Check out the [OpenTelemetry Features Status Page](https://opentelemetry.io/status/) to learn more about timelines for metrics.
 
