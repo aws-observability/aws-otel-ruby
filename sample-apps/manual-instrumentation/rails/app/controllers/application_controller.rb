@@ -3,7 +3,7 @@
 # as long as we are using the `OpenTelemetry::Propagator::XRay::IDGenerator`
 # in the rails initializer file.
 #
-# See more: `sample-apps/manual-instrumentation/ruby-on-rails/config/initializers/opentelemetry.rb`
+# See more: `sample-apps/manual-instrumentation/rails/config/initializers/opentelemetry.rb`
 #
 # See more: https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader
 #

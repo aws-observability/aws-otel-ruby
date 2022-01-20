@@ -28,6 +28,6 @@ Sending metrics to Amazon CloudWatch is not yet validated. Check out the [OpenTe
 
 ## Application structure
 
-Although this app was created with the `ruby new ruby-on-rails --minimal` command, it has been even further stripped down to focus on the OpenTelemetry changes needed to get tracing in this ruby on rails app.
+Although this app was created with the `ruby new ruby-on-rails --minimal && mv ruby-on-rails rails` command, it has been even further stripped down to focus on the OpenTelemetry changes needed to get tracing in this ruby on rails app.
 
-The changes needed to trace with OpenTelemetry are found in [sample-apps/manual-instrumentation/ruby-on-rails/config/initializers/opentelemetry.rb](sample-apps/manual-instrumentation/ruby-on-rails/config/initializers/opentelemetry.rb).
+The changes needed to trace with OpenTelemetry are found in [sample-apps/manual-instrumentation/rails/config/initializers/opentelemetry.rb](sample-apps/manual-instrumentation/rails/config/initializers/opentelemetry.rb).

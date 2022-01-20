@@ -4,6 +4,6 @@
 # VSCode
 .vscode/
 
-# ruby-on-rails
-**/ruby-on-rails/tmp
-**/ruby-on-rails/log
+# rails sample app
+**/rails/tmp
+**/rails/log
