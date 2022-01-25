@@ -58,4 +58,6 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   config.log_level = ENV.fetch('SAMPLE_APP_LOG_LEVEL', nil) == 'ERROR' ? :error : :debug
+
+  config.hosts << /(app|localhost|127.0.0.1|0.0.0.0)/
 end
