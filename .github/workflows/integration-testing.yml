@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-      packages: write
+      contents: read
     strategy:
       fail-fast: false
       matrix:
