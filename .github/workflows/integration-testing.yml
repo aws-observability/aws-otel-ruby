@@ -16,7 +16,7 @@ jobs:
         app-platform: [ ruby-on-rails ]
         instrumentation-type: [ manual ]
     env:
-      APP_PATH: integration-test-apps/${{ matrix.instrumentation-type}}-instrumentation/${{ matrix.app-platform }}
+      APP_PATH: sample-apps/${{ matrix.instrumentation-type}}-instrumentation/${{ matrix.app-platform }}
     steps:
       - name: Checkout This Repo
         uses: actions/checkout@v2
