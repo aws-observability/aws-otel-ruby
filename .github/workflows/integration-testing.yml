@@ -41,8 +41,7 @@ jobs:
             ${{ runner.os }}-buildx-
       - name: Construct Sample App image tag
         run: >
-          echo "APP_IMAGE=public.ecr.aws/aws-otel-test/ruby-${{ matrix.app-platform }}-${{ matrix.instrumentation-type }}:${{ github.sha }}
-          " |
+          echo "APP_IMAGE=public.ecr.aws/aws-otel-test/ruby-${{ matrix.app-platform }}-${{ matrix.instrumentation-type }}:${{ github.sha }}" |
           tee --append $GITHUB_ENV;
       - name: Build and Push Docker image
         uses: docker/build-push-action@v2
