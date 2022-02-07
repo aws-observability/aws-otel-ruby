@@ -1,8 +1,7 @@
 receivers:
   otlp:
     protocols:
-      grpc:
-        endpoint: 0.0.0.0:4317
+      http:
   hostmetrics:
     collection_interval: ${HOSTMETRICS_INTERVAL_SECS}s
     scrapers:
@@ -74,7 +73,8 @@ service:
     metrics:
       receivers:
         - hostmetrics
-        - otlp
+        # Metrics not yet available
+        # - otlp
       processors:
         - filter
         - metricstransform
