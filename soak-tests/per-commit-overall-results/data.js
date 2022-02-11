@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1644523909314,
+  "lastUpdate": 1644610338737,
   "repoUrl": "https://github.com/aws-observability/aws-otel-ruby",
   "entries": {
     "Soak Test Results - sample-app-ruby-on-rails-manual": [
@@ -31,6 +31,38 @@ window.BENCHMARK_DATA = {
           {
             "name": "Soak Test Average Virtual Memory Used",
             "value": 865.5814924568965,
+            "unit": "Megabytes"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "Nathaniel Ruiz Nowell",
+            "username": "NathanielRN",
+            "email": "nathanielruiz98@gmail.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "f81f3a764739515ff57a0cf9dac051a096dabd71",
+          "message": "Use symbolic link for file instead of copy and paste (#14)",
+          "timestamp": "2022-02-10T20:44:58Z",
+          "url": "https://github.com/aws-observability/aws-otel-ruby/commit/f81f3a764739515ff57a0cf9dac051a096dabd71"
+        },
+        "date": 1644610338382,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Soak Test Average CPU Load",
+            "value": 31.98284482758621,
+            "unit": "Percent"
+          },
+          {
+            "name": "Soak Test Average Virtual Memory Used",
+            "value": 1129.814453125,
             "unit": "Megabytes"
           }
         ]
