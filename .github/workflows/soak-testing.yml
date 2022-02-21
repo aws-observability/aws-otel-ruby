@@ -74,9 +74,14 @@ jobs:
       # repo dependent
       - name: Configure Manual Instrumentation-Type Specific Values
         if: ${{ matrix.instrumentation-type == 'manual' }}
+        # TODO: (enowell) Update this line to parse the version from
+        # `bundle info puma`. This is because depend-a-bot might change this
+        # version in the Sample App but won't update it here.
+        #
+        # See: https://github.com/aws-observability/aws-otel-ruby/pull/17
         run: |
           echo 'APP_PROCESS_COMMAND_LINE_DIMENSION_VALUE<<EOF' >> $GITHUB_ENV
-          echo 'puma 5.5.2 (tcp://0.0.0.0:${{ env.LISTEN_ADDRESS_PORT }}) [app]' | tee --append $GITHUB_ENV;
+          echo 'puma 5.6.2 (tcp://0.0.0.0:${{ env.LISTEN_ADDRESS_PORT }}) [app]' | tee --append $GITHUB_ENV;
           echo 'EOF' >> $GITHUB_ENV
 
     # MARK: - Uniquely identify this Sample App environment
