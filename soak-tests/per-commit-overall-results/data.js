@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1644610338737,
+  "lastUpdate": 1645560738902,
   "repoUrl": "https://github.com/aws-observability/aws-otel-ruby",
   "entries": {
     "Soak Test Results - sample-app-ruby-on-rails-manual": [
@@ -63,6 +63,38 @@ window.BENCHMARK_DATA = {
           {
             "name": "Soak Test Average Virtual Memory Used",
             "value": 1129.814453125,
+            "unit": "Megabytes"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]",
+            "email": "49699333+dependabot[bot]@users.noreply.github.com"
+          },
+          "committer": {
+            "name": "GitHub",
+            "username": "web-flow",
+            "email": "noreply@github.com"
+          },
+          "id": "2a9578d0c19b7a63a18c8220cce82995d48347c8",
+          "message": "Bump puma from 5.5.2 to 5.6.2 in /sample-apps/manual-instrumentation/ruby-on-rails (#17)\n\n* Bump puma in /sample-apps/manual-instrumentation/ruby-on-rails\r\n\r\nBumps [puma](https://github.com/puma/puma) from 5.5.2 to 5.6.2.\r\n- [Release notes](https://github.com/puma/puma/releases)\r\n- [Changelog](https://github.com/puma/puma/blob/master/History.md)\r\n- [Commits](https://github.com/puma/puma/compare/v5.5.2...v5.6.2)\r\n\r\n---\r\nupdated-dependencies:\r\n- dependency-name: puma\r\n  dependency-type: direct:production\r\n...\r\n\r\nSigned-off-by: dependabot[bot] <support@github.com>\r\n\r\n* Update Soak Test Sample App process listening string\r\n\r\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>\r\nCo-authored-by: Nathaniel Ruiz Nowell <nathanielruiz98@gmail.com>",
+          "timestamp": "2022-02-21T22:18:48Z",
+          "url": "https://github.com/aws-observability/aws-otel-ruby/commit/2a9578d0c19b7a63a18c8220cce82995d48347c8"
+        },
+        "date": 1645560738141,
+        "tool": "customSmallerIsBetter",
+        "benches": [
+          {
+            "name": "Soak Test Average CPU Load",
+            "value": 14.476063218390804,
+            "unit": "Percent"
+          },
+          {
+            "name": "Soak Test Average Virtual Memory Used",
+            "value": 865.666015625,
             "unit": "Megabytes"
           }
         ]
