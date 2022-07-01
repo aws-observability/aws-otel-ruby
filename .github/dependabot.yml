@@ -1,0 +1,17 @@
+version: 2
+updates:
+  - package-ecosystem: 'bundler'
+    directory: '/sample-apps/manual-instrumentation/ruby-on-rails'
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    labels:
+      - "ruby dependencies"
+    rebase-strategy: "auto"
+  - package-ecosystem: "github-actions"
+    directory: '/'
+    schedule:
+      interval: "weekly"
+      day: "sunday"
+    labels:
+      - "actions"
