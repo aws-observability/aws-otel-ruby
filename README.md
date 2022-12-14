@@ -39,9 +39,9 @@ following links.
 - [ADOT Ruby X-Ray Propagator Package](https://github.com/open-telemetry/opentelemetry-ruby/tree/main/propagator/xray#opentelemetry-propagator-xray)
 - [AWS Distro for OpenTelemetry](https://aws-otel.github.io/)
 
-## Security
+## Security issue notifications
 
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
+If you discover a potential security issue in this project we ask that you notify AWS/Amazon Security via our [vulnerability reporting page](http://aws.amazon.com/security/vulnerability-reporting/). Please do **not** create a public github issue.
 
 ## License
 
