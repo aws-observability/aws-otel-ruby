@@ -157,7 +157,7 @@ GEM
     opentelemetry-instrumentation-base (0.21.1)
       opentelemetry-api (~> 1.0)
       opentelemetry-registry (~> 0.1)
-    opentelemetry-instrumentation-faraday (0.21.0)
+    opentelemetry-instrumentation-faraday (0.22.0)
       opentelemetry-api (~> 1.0)
       opentelemetry-common (~> 0.19.3)
       opentelemetry-instrumentation-base (~> 0.21.0)
