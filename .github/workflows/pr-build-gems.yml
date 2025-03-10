@@ -1,4 +1,4 @@
-name: CI Exporter
+name: PR Build for AWS OTel Ruby Gems
 
 on:
   workflow_dispatch:
@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         gem:
-          - aws-otel-exporter-otlp-udp
+          - aws-opentelemetry-exporter-otlp-udp
         os:
           - ubuntu-latest
     name: "${{ matrix.gem }} / ${{ matrix.os }}"
@@ -54,7 +54,7 @@ jobs:
         shell: bash
         run: |
           echo "skip=false" >> $GITHUB_OUTPUT
-          [[ "${{ matrix.gem }}" == "aws-otel-exporter-otlp-udp"        ]] && echo "skip=true" >> $GITHUB_OUTPUT
+          [[ "${{ matrix.gem }}" == "aws-opentelemetry-exporter-otlp-udp"        ]] && echo "skip=true" >> $GITHUB_OUTPUT
           # This is essentially a bash script getting evaluated, so we need to return true or the whole job fails.
           true
       - name: "Test JRuby"

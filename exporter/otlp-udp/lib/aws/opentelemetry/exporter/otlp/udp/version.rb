@@ -4,16 +4,14 @@
 # SPDX-License-Identifier: Apache-2.0
 
 module AWS
-  module OTel
+  module OpenTelemetry
     module Exporter
       module OTLP
-        # UDP contains the implementation for the OTLP over UDP exporter
         module UDP
+          ## Current OTLP UDP exporter version
+          VERSION = '0.0.1'
         end
       end
     end
   end
 end
-
-require 'aws/otel/exporter/otlp/udp/exporter'
-require 'aws/otel/exporter/otlp/udp/version'

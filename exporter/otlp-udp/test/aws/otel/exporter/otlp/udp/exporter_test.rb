@@ -4,12 +4,12 @@
 # SPDX-License-Identifier: Apache-2.0
 require 'test_helper'
 
-describe AWS::OTel::Exporter::OTLP::UDP::UdpExporter do
+describe AWS::OpenTelemetry::Exporter::OTLP::UDP::UdpExporter do
   let(:success) { OpenTelemetry::SDK::Trace::Export::SUCCESS }
   let(:endpoint) { 'localhost:3000' }
   let(:host) { 'localhost' }
   let(:port) { 3000 }
-  let(:udp_exporter) { AWS::OTel::Exporter::OTLP::UDP::UdpExporter.new(endpoint) }
+  let(:udp_exporter) { AWS::OpenTelemetry::Exporter::OTLP::UDP::UdpExporter.new(endpoint) }
 
   def test_parse_endpoint_correctly
     _(udp_exporter.instance_variable_get(:@endpoint)).must_equal(endpoint)
@@ -26,7 +26,7 @@ describe AWS::OTel::Exporter::OTLP::UDP::UdpExporter do
     mock_socket.expect(:send, nil, [encoded_data, 0, host, port])
 
     UDPSocket.stub :new, mock_socket do
-      exporter = AWS::OTel::Exporter::OTLP::UDP::UdpExporter.new(endpoint)
+      exporter = AWS::OpenTelemetry::Exporter::OTLP::UDP::UdpExporter.new(endpoint)
       exporter.send_data(data, prefix)
     end
 
@@ -41,7 +41,7 @@ describe AWS::OTel::Exporter::OTLP::UDP::UdpExporter do
     raises_exception = -> { raise ArgumentError 'test_exception' }
     mock_socket.stub :send, raises_exception do
       UDPSocket.stub :new, mock_socket do
-        exporter = AWS::OTel::Exporter::OTLP::UDP::UdpExporter.new(endpoint)
+        exporter = AWS::OpenTelemetry::Exporter::OTLP::UDP::UdpExporter.new(endpoint)
         assert_raises(ArgumentError) { exporter.send_data(data, prefix) }
       end
     end
@@ -52,7 +52,7 @@ describe AWS::OTel::Exporter::OTLP::UDP::UdpExporter do
     mock_socket.expect(:close, nil, [])
 
     UDPSocket.stub :new, mock_socket do
-      exporter = AWS::OTel::Exporter::OTLP::UDP::UdpExporter.new(endpoint)
+      exporter = AWS::OpenTelemetry::Exporter::OTLP::UDP::UdpExporter.new(endpoint)
       exporter.shutdown
     end
 
@@ -61,15 +61,15 @@ describe AWS::OTel::Exporter::OTLP::UDP::UdpExporter do
 
   def test_throw_when_provided_invalid_endpoint
     assert_raises(StandardError, 'Invalid endpoint: 123') do
-      AWS::OTel::Exporter::OTLP::UDP::UdpExporter.new(123)
+      AWS::OpenTelemetry::Exporter::OTLP::UDP::UdpExporter.new(123)
     end
   end
 end
 
-describe AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter do
+describe AWS::OpenTelemetry::Exporter::OTLP::UDP::OTLPUdpSpanExporter do
   let(:success) { OpenTelemetry::SDK::Trace::Export::SUCCESS }
   let(:endpoint) { 'localhost:3001' }
-  let(:otlp_udp_span_exporter) { AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new(endpoint) }
+  let(:otlp_udp_span_exporter) { AWS::OpenTelemetry::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new(endpoint) }
 
   def test_export_spans_successfully
     prefix = 'T1'
@@ -79,8 +79,8 @@ describe AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter do
     mock_exporter.expect(:send_data, [], [encoded_data, prefix])
 
     result = -1
-    AWS::OTel::Exporter::OTLP::UDP::UdpExporter.stub :new, mock_exporter do
-      exporter = AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new(endpoint, prefix)
+    AWS::OpenTelemetry::Exporter::OTLP::UDP::UdpExporter.stub :new, mock_exporter do
+      exporter = AWS::OpenTelemetry::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new(endpoint, prefix)
       exporter.stub :encode, 'ABCDEF' do
         result = exporter.export([], timeout: 0)
       end
@@ -94,7 +94,7 @@ describe AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter do
     prefix = 'T1'
     result = -1
 
-    exporter = AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new(endpoint, prefix)
+    exporter = AWS::OpenTelemetry::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new(endpoint, prefix)
     exporter.stub :encode, nil do
       result = exporter.export([], timeout: 0)
     end
@@ -107,7 +107,7 @@ describe AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter do
     raises_exception = -> { raise ArgumentError 'test_exception' }
 
     result = -1
-    exporter = AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new(endpoint, prefix)
+    exporter = AWS::OpenTelemetry::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new(endpoint, prefix)
     exporter.instance_variable_get(:@udp_exporter).stub :send_data, raises_exception do
       result = exporter.export([], timeout: 0)
     end
@@ -123,8 +123,8 @@ describe AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter do
     mock_exporter = Minitest::Mock.new
     mock_exporter.expect(:shutdown, nil, [])
 
-    AWS::OTel::Exporter::OTLP::UDP::UdpExporter.stub :new, mock_exporter do
-      exporter = AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new(endpoint)
+    AWS::OpenTelemetry::Exporter::OTLP::UDP::UdpExporter.stub :new, mock_exporter do
+      exporter = AWS::OpenTelemetry::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new(endpoint)
       exporter.shutdown
     end
 
@@ -135,7 +135,7 @@ describe AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter do
     ENV['AWS_LAMBDA_FUNCTION_NAME'] = 'testFunctionName'
     ENV['AWS_XRAY_DAEMON_ADDRESS'] = 'someaddress:1234'
 
-    exporter = AWS::OTel::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new()
+    exporter = AWS::OpenTelemetry::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new
     _(exporter.instance_variable_get(:@endpoint)).must_equal('someaddress:1234')
     _(exporter.instance_variable_get(:@udp_exporter).instance_variable_get(:@host)).must_equal('someaddress')
     _(exporter.instance_variable_get(:@udp_exporter).instance_variable_get(:@port)).must_equal(1234)

@@ -1,1 +1,1 @@
-# Release History: aws-otel-exporter-otlp-dup
+# Release History: aws-opentelemetry-exporter-otlp-dup

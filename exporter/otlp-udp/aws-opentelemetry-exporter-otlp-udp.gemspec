@@ -5,11 +5,11 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'aws/otel/exporter/otlp/udp/version'
+require 'aws/opentelemetry/exporter/otlp/udp/version'
 
 Gem::Specification.new do |spec|
-  spec.name        = 'aws-otel-exporter-otlp-udp'
-  spec.version     = AWS::OTel::Exporter::OTLP::UDP::VERSION
+  spec.name        = 'aws-opentelemetry-exporter-otlp-udp'
+  spec.version     = AWS::OpenTelemetry::Exporter::OTLP::UDP::VERSION
   spec.authors     = ['Amazon Web Services']
 
   spec.summary     = 'OTLP UDP exporter for the OpenTelemetry framework'

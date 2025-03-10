@@ -1,9 +1,9 @@
 --no-private
---title=AWS OTel OTLP UDP
+--title=AWS OpenTelemetry OTLP UDP
 --markup=markdown
 --main=README.md
-./lib/aws/otel/exporter/otlp/udp/**/*.rb
-./lib/aws/otel/exporter/otlp/udp.rb
+./lib/aws/opentelemetry/exporter/otlp/udp/**/*.rb
+./lib/aws/opentelemetry/exporter/otlp/udp.rb
 -
 README.md
 CHANGELOG.md

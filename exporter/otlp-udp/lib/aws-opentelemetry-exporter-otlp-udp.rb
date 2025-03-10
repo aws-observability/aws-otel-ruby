@@ -3,4 +3,4 @@
 # Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
-require 'aws/otel/exporter/otlp/udp'
+require 'aws/opentelemetry/exporter/otlp/udp'

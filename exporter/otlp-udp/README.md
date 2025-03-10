@@ -1,1 +1,1 @@
-# aws-otel-exporter-otlp-udp
+# aws-opentelemetry-exporter-otlp-udp

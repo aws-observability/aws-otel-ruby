@@ -11,7 +11,7 @@ end
 require 'pry'
 
 require 'opentelemetry-test-helpers'
-require 'aws/otel/exporter/otlp/udp'
+require 'aws/opentelemetry/exporter/otlp/udp'
 require 'minitest/autorun'
 require 'webmock/minitest'
 
