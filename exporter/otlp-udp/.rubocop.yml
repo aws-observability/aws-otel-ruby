@@ -1,0 +1,36 @@
+AllCops:
+  NewCops: disable
+  SuggestExtensions: false
+  TargetRubyVersion: "3.1"
+  Exclude:
+    - "vendor/**/*"
+
+Layout/LineLength:
+  Enabled: false
+
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - "test/**/*"
+Lint/MissingSuper:
+  Enabled: false
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 21
+Metrics/ParameterLists:
+  Enabled: false
+
+Style/ModuleFunction:
+  Enabled: false
+Style/NumericPredicate:
+  Enabled: false
+Style/StringConcatenation:
+  Exclude:
+    - "test/**/*"
+
+Naming/FileName:
+  Exclude:
+    - "lib/aws-opentelemetry-exporter-otlp-udp.rb"
