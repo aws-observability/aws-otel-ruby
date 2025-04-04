@@ -1,7 +1,7 @@
 PATH
   remote: ../../../exporter/otlp-udp
   specs:
-    aws-opentelemetry-exporter-otlp-udp (0.0.1)
+    aws-distro-opentelemetry-exporter-xray-udp (0.0.1)
       base64
       opentelemetry-api (~> 1.1)
       opentelemetry-exporter-otlp (~> 0.26.1)
@@ -284,7 +284,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-opentelemetry-exporter-otlp-udp!
+  aws-distro-opentelemetry-exporter-xray-udp!
   aws-sdk-s3 (~> 1)
   concurrent-ruby (= 1.3.4)
   debug
