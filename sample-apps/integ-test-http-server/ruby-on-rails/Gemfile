@@ -29,7 +29,7 @@ gem 'opentelemetry-instrumentation-aws_sdk', '>= 0.2.1'
 gem 'opentelemetry-instrumentation-faraday'
 gem 'opentelemetry-instrumentation-rails'
 
-# Test the current commit of `aws-opentelemetry-exporter-otlp-udp`
-gem 'aws-opentelemetry-exporter-otlp-udp', path: '../../../exporter/otlp-udp'
+# Test the current commit of `aws-distro-opentelemetry-exporter-xray-udp`
+gem 'aws-distro-opentelemetry-exporter-xray-udp', path: '../../../exporter/otlp-udp'
 
 gem 'concurrent-ruby', '1.3.4'

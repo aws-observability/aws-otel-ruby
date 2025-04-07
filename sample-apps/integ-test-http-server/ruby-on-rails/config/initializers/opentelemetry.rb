@@ -1,6 +1,6 @@
 require 'opentelemetry/sdk'
 
-udp_trace_exporter = AWS::OpenTelemetry::Exporter::OTLP::UDP::OTLPUdpSpanExporter.new("127.0.0.1:2000")
+udp_trace_exporter = AWS::Distro::OpenTelemetry::Exporter::XRay::UDP::AWSXRayUDPSpanExporter.new("127.0.0.1:2000")
 
 # Create a simple span processor with custom configuration
 simple_processor = OpenTelemetry::SDK::Trace::Export::SimpleSpanProcessor.new(

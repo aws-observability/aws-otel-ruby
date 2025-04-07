@@ -1,1 +1,1 @@
-# aws-opentelemetry-exporter-otlp-udp
+# aws-distro-opentelemetry-exporter-xray-udp

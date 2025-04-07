@@ -33,4 +33,4 @@ Style/StringConcatenation:
 
 Naming/FileName:
   Exclude:
-    - "lib/aws-opentelemetry-exporter-otlp-udp.rb"
+    - "lib/aws-distro-opentelemetry-exporter-xray-udp.rb"

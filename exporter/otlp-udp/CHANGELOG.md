@@ -1,1 +1,1 @@
-# Release History: aws-opentelemetry-exporter-otlp-dup
+# Release History: aws-distro-opentelemetry-exporter-xray-udp

@@ -1,9 +1,9 @@
 --no-private
---title=AWS OpenTelemetry OTLP UDP
+--title=AWS Distro for OpenTelemetry XRay UDP Exporter
 --markup=markdown
 --main=README.md
-./lib/aws/opentelemetry/exporter/otlp/udp/**/*.rb
-./lib/aws/opentelemetry/exporter/otlp/udp.rb
+./lib/aws/distro/opentelemetry/exporter/xray/udp/**/*.rb
+./lib/aws/distro/opentelemetry/exporter/xray/udp.rb
 -
 README.md
 CHANGELOG.md

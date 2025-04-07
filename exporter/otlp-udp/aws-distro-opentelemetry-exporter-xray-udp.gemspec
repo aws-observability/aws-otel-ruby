@@ -5,15 +5,15 @@
 
 lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'aws/opentelemetry/exporter/otlp/udp/version'
+require 'aws/distro/opentelemetry/exporter/xray/udp/version'
 
 Gem::Specification.new do |spec|
-  spec.name        = 'aws-opentelemetry-exporter-otlp-udp'
-  spec.version     = AWS::OpenTelemetry::Exporter::OTLP::UDP::VERSION
+  spec.name        = 'aws-distro-opentelemetry-exporter-xray-udp'
+  spec.version     = AWS::Distro::OpenTelemetry::Exporter::XRay::UDP::VERSION
   spec.authors     = ['Amazon Web Services']
 
-  spec.summary     = 'OTLP UDP exporter for the OpenTelemetry framework'
-  spec.description = 'OTLP UDP exporter for the OpenTelemetry framework'
+  spec.summary     = 'AWS XRay UDP exporter for the OpenTelemetry framework'
+  spec.description = 'AWS XRay UDP exporter for the OpenTelemetry framework'
   spec.homepage    = 'https://github.com/aws-observability/aws-otel-ruby'
   spec.license     = 'Apache-2.0'
 
@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 3.1'
 
-  spec.add_dependency 'base64'
+  spec.add_dependency 'base64', '~> 0.2.0'
   spec.add_dependency 'opentelemetry-api', '~> 1.1'
   spec.add_dependency 'opentelemetry-exporter-otlp', '~> 0.26.1'
   spec.add_dependency 'opentelemetry-sdk', '~> 1.2'
