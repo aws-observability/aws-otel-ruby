@@ -22,14 +22,14 @@ jobs:
         uses: ruby/setup-ruby@v1.221.0
         with:
           ruby-version: "${{ env.RUBY_VERSION }}"
-          working-directory: "exporter/otlp-udp"
+          working-directory: "exporter/xray-udp"
           bundler: "latest"
           bundler-cache: true
-          cache-version: "v1-ruby-otlp-udp"
+          cache-version: "v1-ruby-xray-udp"
 
       - name: Run Unit Tests
         run: |
-          cd exporter/otlp-udp
+          cd exporter/xray-udp
           bundle install
           bundle exec rake test
 
@@ -43,12 +43,12 @@ jobs:
 
       - name: Setup Sample App
         run: |
-          cd sample-apps/integ-test-http-server/ruby-on-rails
+          cd .github/test-sample-apps/integ-test-http-server/ruby-on-rails
           bundle install
 
       - name: Run Sample App in Background
         run: |
-          cd sample-apps/integ-test-http-server/ruby-on-rails
+          cd .github/test-sample-apps/integ-test-http-server/ruby-on-rails
           LISTEN_ADDRESS=127.0.0.1:8080 rails server &
           # Wait for test server to initialize
           sleep 5
