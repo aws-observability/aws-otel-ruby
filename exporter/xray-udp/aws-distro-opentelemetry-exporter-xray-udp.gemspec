@@ -41,7 +41,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'yard-doctest', '~> 0.1.6'
 
   if spec.respond_to?(:metadata)
-    spec.metadata['source_code_uri'] = 'https://github.com/aws-observability/aws-otel-ruby/tree/main/exporter/otlp-udp'
+    spec.metadata['source_code_uri'] = 'https://github.com/aws-observability/aws-otel-ruby/tree/main/exporter/xray-udp'
     spec.metadata['bug_tracker_uri'] = 'https://github.com/aws-observability/aws-otel-ruby/issues'
   end
 end
