@@ -2,7 +2,7 @@ name: Release ADOT X-Ray UDP Exporter
 on:
   workflow_dispatch:
     inputs:
-      version:
+      udp-exporter-version:
         description: The version to tag the release with, e.g., 1.2.0
         required: true
 
@@ -38,9 +38,36 @@ jobs:
           cache-version: "v1-ruby-xray-udp"
 
       - name: Run Unit Tests
+        working-directory: "exporter/xray-udp"
         run: |
-          cd exporter/xray-udp
           bundle install
           bundle exec rake test
 
-      # TODO: Publish OTLP UDP Exporter to RubyGems
+      - name: Build gem
+        working-directory: "exporter/xray-udp"
+        run: |
+          gem build aws-distro-opentelemetry-exporter-xray-udp.gemspec
+
+      - name: Validate gem version matches workflow input
+        working-directory: "exporter/xray-udp"
+        run: |
+          if [[ ! -f aws-distro-opentelemetry-exporter-xray-udp-${{ inputs.udp-exporter-version }}.gem ]]; then
+            echo "Input version '${{ inputs.udp-exporter-version }}' does not match with UDP Exporter gem version"
+            exit 1
+          fi
+
+      - name: Set API key credentials
+        run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+        env:
+          GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_UDP_EXPORTER_API_KEY }}
+
+      - name: Push gem
+        working-directory: "exporter/xray-udp"
+        run: gem push aws-distro-opentelemetry-exporter-xray-udp-${{ inputs.udp-exporter-version }}.gem
+
+      - name: Clear credentials
+        run: rm -f ~/.gem/credentials
