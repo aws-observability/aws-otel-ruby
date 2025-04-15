@@ -83,4 +83,4 @@ jobs:
             --title "Release aws-distro-opentelemetry-exporter-xray-udp v${{ inputs.udp-exporter-version }}" \
             --notes "Please refer to the [Changelog](https://github.com/aws-observability/aws-otel-ruby/blob/main/exporter/xray-udp/CHANGELOG.md) for more details" \
             --draft \
-            "v${{ inputs.udp-exporter-version }}"
+            "aws-distro-opentelemetry-exporter-xray-udp/v${{ inputs.udp-exporter-version }}"
