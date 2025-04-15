@@ -11,6 +11,7 @@ env:
 
 permissions:
   id-token: write
+  contents: write
 
 jobs:
   validate-udp-exporter-e2e-test:
@@ -71,3 +72,14 @@ jobs:
 
       - name: Clear credentials
         run: rm -f ~/.gem/credentials
+
+      # Publish to GitHub releases
+      - name: Create GH release
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        run: |
+          gh release create --target "$GITHUB_REF_NAME" \
+            --title "Release aws-distro-opentelemetry-exporter-xray-udp v${{ inputs.udp-exporter-version }}" \
+            --draft \
+            "v${{ inputs.udp-exporter-version }}"
