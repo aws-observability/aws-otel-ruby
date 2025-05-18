@@ -30,7 +30,7 @@ jobs:
           echo "APP_IMAGE=public.ecr.aws/aws-otel-test/ruby-${{ matrix.app-platform }}-${{ matrix.instrumentation-type }}:${{ github.sha }}" |
           tee --append $GITHUB_ENV;
       - name: Build Docker image
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           context: ${{ env.APP_PATH }}
           tags: |
