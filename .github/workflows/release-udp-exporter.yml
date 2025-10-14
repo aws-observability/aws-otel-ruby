@@ -26,7 +26,7 @@ jobs:
     needs: validate-udp-exporter-e2e-test
     steps:
       - name: Checkout Repo @ SHA - ${{ github.sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # Install ruby and bundle dependencies and cache!
       - name: Install Ruby ${{ env.RUBY_VERSION }} with dependencies
