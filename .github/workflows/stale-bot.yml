@@ -20,7 +20,7 @@ on:
 jobs:
   stale-close:
     permissions:
-      contents: write
+      contents: read
       issues: write
       pull-requests: write
     runs-on: ubuntu-latest
