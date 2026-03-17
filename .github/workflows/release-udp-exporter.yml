@@ -26,11 +26,11 @@ jobs:
     needs: validate-udp-exporter-e2e-test
     steps:
       - name: Checkout Repo @ SHA - ${{ github.sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 #v4.3.1
 
       # Install ruby and bundle dependencies and cache!
       - name: Install Ruby ${{ env.RUBY_VERSION }} with dependencies
-        uses: ruby/setup-ruby@v1.221.0
+        uses: ruby/setup-ruby@32110d4e311bd8996b2a82bf2a43b714ccc91777 #v1.221.0
         with:
           ruby-version: "${{ env.RUBY_VERSION }}"
           working-directory: "exporter/xray-udp"

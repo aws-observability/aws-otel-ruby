@@ -16,11 +16,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo @ SHA - ${{ github.sha }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 #v4.3.1
 
       # Install ruby and bundle dependencies and cache!
       - name: Install Ruby ${{ env.RUBY_VERSION }} with dependencies
-        uses: ruby/setup-ruby@v1.221.0
+        uses: ruby/setup-ruby@32110d4e311bd8996b2a82bf2a43b714ccc91777 #v1.221.0
         with:
           ruby-version: "${{ env.RUBY_VERSION }}"
           working-directory: "exporter/xray-udp"
@@ -29,7 +29,7 @@ jobs:
           cache-version: "v1-ruby-xray-udp"
 
       - name: Configure AWS credentials for Testing Tracing
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@7474bc4690e29a8392af63c5b98e7449536d5c3a #v4.3.1
         with:
           role-to-assume: ${{ secrets.XRAY_UDP_EXPORTER_TEST_ROLE }}
           aws-region: 'us-east-1'
